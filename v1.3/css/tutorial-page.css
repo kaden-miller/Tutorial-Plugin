@@ -1,0 +1,185 @@
+/* Tutorial Styling */
+.tutorialFilerBar {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  column-gap: 5.5%;
+}
+.tutorialFilerBar label {
+  margin-bottom: 0 !important;
+}
+.tutorialFilerBar input,
+.tutorialFilerBar select {
+  height: 100%;
+  border-radius: 5px !important;
+  padding: 0 10px 0 !important;
+  margin-bottom: 0 !important;
+}
+.tutorialDropdown,
+.tutorialSearch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  flex-grow: 1;
+}
+.tutorialTypeLabel {
+  width: 100%;
+}
+.tutorialDropdown select {
+  margin-left: 15px;
+  margin-bottom: 0 !important;
+}
+.tutorialDropdown button,
+.tutorialSearch button {
+  color: #ffffff !important;
+  border-width: 0px !important;
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  background-color: #2e737e;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 7px 20px;
+  margin-left: 15px;
+}
+.tutorialSearch input {
+  margin-bottom: 0 !important;
+}
+.tutorialGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin-top: 30px;
+}
+.tutorialItem {
+  background-color: #edf4f2;
+  border-radius: 5px 5px 5px 5px;
+  padding: 20px;
+  position: relative;
+}
+
+.copyUrlWrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.copyUrlWrapper button {
+  border: unset;
+  background: unset;
+  padding: 15px 15px 15px 10px;
+  cursor: pointer;
+  display: flex;
+}
+
+.copyUrlWrapper button img {
+  width: 20px;
+  transition: all 1s ease-in-out;
+}
+
+.copyUrlWrapper button img.rotate {
+  transform: rotate(120deg);
+}
+
+.copyUrlWrapper .success-message {
+  opacity: 0;
+  transition: all 500ms ease-in-out;
+  font-size: 16px;
+}
+
+.copyUrlWrapper.clicked .success-message {
+  opacity: 1;
+  transition: all 500ms ease-in-out;
+}
+
+.tutorialItem:target {
+  background-color: #f5e7e8;
+  border: 2px solid #007580;
+}
+.tutorialItem h2 {
+  font-size: 28px;
+}
+.notesWrapper {
+  margin-top: 20px;
+}
+.notesWrapper .update-note {
+  margin-top: 20px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 14px;
+  font-style: italic;
+  color: #007580;
+  width: 100%;
+  text-align: left;
+}
+.tutorialVideo {
+  margin-top: 15px;
+}
+
+.tutorialFilerBar button {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 980px) {
+  .tutorialFilerBar {
+    flex-wrap: wrap;
+    row-gap: 20px;
+  }
+  .tutorialGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 580px) {
+  .tutorialFilerBar {
+    justify-content: flex-start;
+  }
+  .tutorialDropdown {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    row-gap: 10px;
+  }
+  .tutorialDropdown select {
+    margin-left: 0;
+  }
+  .tutorialDropdown label {
+    width: 100%;
+  }
+  .tutorialDropdown select,
+  .tutorialSearch input {
+    width: 230px;
+  }
+  .tutorialDropdown button,
+  .tutorialSearch button {
+    width: 120px;
+  }
+  .tutorialItem h2 {
+    font-size: 22px;
+  }
+  .tutorialItem p,
+  .tutorialItem a {
+    font-size: 16px;
+  }
+  .tutorialVideo {
+    margin-top: 5px;
+  }
+  .notesWrapper {
+    margin-top: 15px;
+  }
+  .tutorialGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .tutorialDropdown,
+  .tutorialSearch {
+    width: 100%;
+  }
+}
+
+/* END Tutorial Styling */
