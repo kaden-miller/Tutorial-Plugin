@@ -3,7 +3,7 @@
 /**
  * Plugin Name:       Website Tutorials
  * Description:       Video tutorials on how to use important featues on your website.
- * Version:           1.31
+ * Version:           1.32
  * Author:            Kaden Miller Web Design
  * Author URI:        https://www.kadenmillerwebdesign.com/
  * License:           GPL License
