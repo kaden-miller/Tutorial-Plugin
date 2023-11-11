@@ -3,7 +3,7 @@
 /**
  * Plugin Name:       Website Tutorials
  * Description:       Video tutorials on how to use important featues on your website.
- * Version:           1.31
+ * Version:           1.32
  * Author:            Kaden Miller Web Design
  * Author URI:        https://www.kadenmillerwebdesign.com/
  * License:           GPL License
@@ -13,6 +13,13 @@
 
  require_once 'tutorial_page.php';
 
+// Include our updater file
+include_once( plugin_dir_path( __FILE__ ) . 'update.php');
+
+$updater = new Pizza_Updater( __FILE__ ); // instantiate our class
+$updater->set_username( 'kaden-miller' ); // set username
+$updater->set_repository( 'Tutorial-Plugin' ); // set repo
+$updater->initialize(); // initialize the updater
 
 function register_tutorials_post_type() {
     $labels = array(
