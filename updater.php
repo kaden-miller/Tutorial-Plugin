@@ -152,7 +152,7 @@ class Pizza_Updater {
 
 		if ( null !== $args['filename'] ) {
 			if( $this->authorize_token ) { 
-				$args = array_merge( $args, array( "headers" => array( "Authorization" => "token {$this->authorize_token}" ) ) );
+				$args = array_merge( $args, array( "headers" => array( "Authorization" => "bearer {$this->authorize_token}" ) ) );
 			}
 		}
 		
