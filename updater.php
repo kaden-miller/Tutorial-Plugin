@@ -10,10 +10,9 @@ class Pizza_Updater {
     private $authorize_token;
     private $github_response;
 
-    public function _construct($file) {
+    public function __construct($file) {
         $this->file = $file;
         add_action('admin_init', array($this, 'set_plugin_properties'));
-        return $this;
     }
 
     public function set_plugin_properties() {
@@ -26,26 +25,26 @@ class Pizza_Updater {
         $this->username = $username;
     }
     public function set_repository( $repository ) {
-        $this->$repository = $repository;
+        $this->repository = $repository;
     }
     public function authorize( $token ) {
-        $this->$authorize_token = $token;
+        $this->authorize_token = $token;
     }
 
     private function get_repository_info() {
-        if (is_null($this->$github_response)){ // Do we have a response?
-            $request_uri - sprintf(
-                'https://api.github.com/repos/%s/$s/releases', $this->username, $this->$repository
+        if (is_null($this->github_response)){ // Do we have a response?
+            $request_uri = sprintf(
+                'https://api.github.com/repos/%s/%s/releases', $this->username, $this->repository
             ); // build URI
             if ( $this->authorize_token ) { // is there an access token?
-                $request_uri - add_query_arg( 'access_token', $this->authorize_token, $request_uri ); // append it
+                $request_uri = add_query_arg( 'access_token', $this->authorize_token, $request_uri ); // append it
             }
-            $response = json_decode( wp_remote_retreive_body(wp_remote_get($request_uri)), true); // get JSON and parse it
+            $response = json_decode( wp_remote_retrieve_body(wp_remote_get($request_uri)), true);
             if (is_array($response)){ // if it is an array
                 $response = current($response); // get the first item
             }
             if($this->authorize_token) { // is there an access token?
-                $response['zipball_url'] = add_query_arg('access_token', $this->authorize_token, $response['zipball_url']) // update our zip url with token
+                $response['zipball_url'] = add_query_arg('access_token', $this->authorize_token, $response['zipball_url']); // update our zip url with token
             }
             $this->github_response = $response;
 
@@ -62,7 +61,7 @@ class Pizza_Updater {
         if (property_exists( $transient, 'checked') ) { // check if transient has a checked property
             if ($checked = $transient->checked) { // did worpress check for updates?
                 $this->get_repository_info();
-                $out_of_date - version_compare( $this->github_response['tag_name'], $checked[$this->basename], 'gt' ); // check if we're out of date
+                $out_of_date = version_compare( $this->github_response['tag_name'], $checked[$this->basename], 'gt' ); // check if we're out of date
                 if( $out_of_date ) {
                     $new_files = $this->github_response['zipball_url']; // get the zip
                     $slug = current( explode('/', $this->basename ) ); // create valid slug
@@ -110,8 +109,8 @@ class Pizza_Updater {
         global $wp_filesystem;  // get global fs object
 
         $install_directory = plugin_dir_path( $this-> file ); // our plugin directory
-        $wp_filesystem->move( $result['destination'], $install_directory )  // move files to the plugin dir
-        $result['distination'] = $install_directory; // set the desination for the rest of the stack
+        $wp_filesystem->move( $result['destination'], $install_directory ); // move files to the plugin dir
+        $result['destination'] = $install_directory; // set the desination for the rest of the stack
 
         if ( $this->active ) { // check if it was active
             activate_plugin( $this->basename ); // reactive plugin
