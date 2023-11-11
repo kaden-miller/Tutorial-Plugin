@@ -14,8 +14,9 @@
  require_once 'tutorial_page.php';
 
 // Include our updater file
-include_once( plugin_dir_path( __FILE__ ) . 'updater.php');
-
+if( ! class_exists( 'Pizza_Updater' ) ){
+	include_once( plugin_dir_path( __FILE__ ) . 'updater.php');
+}
 $updater = new Pizza_Updater( __FILE__ ); // instantiate our class
 $updater->set_username( 'kaden-miller' ); // set username
 $updater->set_repository( 'Tutorial-Plugin' ); // set repo
